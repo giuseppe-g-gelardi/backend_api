@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'authentication.apps.AuthenticationConfig',
     'keyboards.apps.KeyboardsConfig',
     'cars.apps.CarsConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
