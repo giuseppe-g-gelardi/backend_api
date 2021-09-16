@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Keeb
+from .models import Keyboards
 
-admin.site.register(Keeb)
+admin.site.register(Keyboards)
