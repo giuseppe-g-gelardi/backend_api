@@ -17,7 +17,7 @@ def get_all_users(request):
 
 @api_view(['POST', 'GET'])
 @permission_classes([IsAuthenticated])
-def user_users(request):
+def get_user(request, id):
     if request.method == 'POST':
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
@@ -25,6 +25,6 @@ def user_users(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'GET':
-        users = User.objects.filter(user_id=request.user.id)
+        users = User.objects.filter(id=id)
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data)
