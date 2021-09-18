@@ -15,11 +15,11 @@ def get_all_keyboards(request):
 
 @api_view(['POST', 'GET'])
 @permission_classes([IsAuthenticated])
-def user_keyboards(request):
+def user_keyboards(request, id): # delete id?
     if request.method == 'POST':
         serializer = KeyboardSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(keyboard=request.keyboard)
+            serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'GET':
@@ -27,3 +27,14 @@ def user_keyboards(request):
         serializer = KeyboardSerializer(keyboards, many=True)
         return Response(serializer.data)
 
+        # keyboard=request.keyboard
+
+# view method that takes in an id, uses that to find the object to make the FK connection
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def post(self, fk):
+    serializer = KeyboardSerializer(data=fk.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
