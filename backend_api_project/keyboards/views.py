@@ -15,7 +15,7 @@ def get_all_keyboards(request):
 
 @api_view(['POST', 'GET'])
 @permission_classes([IsAuthenticated])
-def user_keyboards(request, id): # delete id?
+def user_keyboards(request): # delete id?
     if request.method == 'POST':
         serializer = KeyboardSerializer(data=request.data)
         if serializer.is_valid():
