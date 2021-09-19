@@ -10,4 +10,4 @@ class Inventory(models.Model):
     switches = models.CharField(max_length=100)
     keycaps = models.CharField(max_length=100)
     plate = models.CharField(max_length=100)
-    price = models.CharField(max_length=10)
+    price = models.CharField(max_length=10, default=0)
